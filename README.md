@@ -40,6 +40,35 @@ Sistem ini adalah aplikasi berbasis Python untuk membantu pengelolaan pemesanan 
   - `cek_jam_operasional`: Memvalidasi waktu pemesanan sesuai jam operasional.
   - `lihat_daftar_pemesanan`: Menampilkan jadwal yang sudah ada.
 
+## System Design
+
+### Kebutuhan
+
+- Membuat dan melihat pemesanan berdasarkan nama, lapangan, tanggal, waktu, dan durasi.
+- Memeriksa bentrok jadwal, jam operasional, harga weekday/weekend, status pembayaran simulasi, serta feedback.
+
+### Pipeline
+
+```text
+Input terminal → validasi tanggal/jam dan bentrok → ubah daftar jadwal di memori
+              → tampilkan jadwal / status pembayaran
+```
+
+Aplikasi berjalan sebagai satu skrip Python. Jadwal contoh dan feedback disimpan dalam variabel selama proses berjalan; tidak ada database atau file penyimpanan untuk perubahan pengguna.
+
+### Trade-off
+
+| Keputusan | Manfaat | Biaya |
+| --- | --- | --- |
+| Simpan jadwal di memori | Mudah dipahami untuk latihan pemrograman dasar | Semua perubahan hilang saat program berhenti |
+| Simulasikan status pembayaran | Memperlihatkan alur DP dan pelunasan | Tidak memproses transaksi uang sungguhan |
+
+### Yang Perlu Ditinjau
+
+- Tambahkan penyimpanan persisten dan validasi agar jadwal tetap konsisten setelah restart.
+- Pisahkan data penyewa dari data jadwal dan tambahkan identitas pemesanan.
+- Perbaiki petunjuk perintah pada README agar menunjuk ke nama skrip yang ada.
+
 ## Instalasi
 
 1. Pastikan Python 3.x sudah terinstal di komputer Anda.
